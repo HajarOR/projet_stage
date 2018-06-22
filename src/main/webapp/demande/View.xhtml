@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandeViewDlg" widgetVar="DemandeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDemandeTitle}">
+            <h:form id="DemandeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDemandeLabel_id}"/>
+                        <h:outputText value="#{demandeController.selected.id}" title="#{bundle.ViewDemandeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_numDemande}"/>
+                        <h:outputText value="#{demandeController.selected.numDemande}" title="#{bundle.ViewDemandeTitle_numDemande}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_numAutorisation}"/>
+                        <h:outputText value="#{demandeController.selected.numAutorisation}" title="#{bundle.ViewDemandeTitle_numAutorisation}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_type}"/>
+                        <h:outputText value="#{demandeController.selected.type}" title="#{bundle.ViewDemandeTitle_type}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_nomSociete}"/>
+                        <h:outputText value="#{demandeController.selected.nomSociete}" title="#{bundle.ViewDemandeTitle_nomSociete}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_dateDemande}"/>
+                        <h:outputText value="#{demandeController.selected.dateDemande}" title="#{bundle.ViewDemandeTitle_dateDemande}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_dateAutorisation}"/>
+                        <h:outputText value="#{demandeController.selected.dateAutorisation}" title="#{bundle.ViewDemandeTitle_dateAutorisation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_dateAnnulation}"/>
+                        <h:outputText value="#{demandeController.selected.dateAnnulation}" title="#{bundle.ViewDemandeTitle_dateAnnulation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_dateRefus}"/>
+                        <h:outputText value="#{demandeController.selected.dateRefus}" title="#{bundle.ViewDemandeTitle_dateRefus}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_citoyen}"/>
+                        <h:outputText value="#{demandeController.selected.citoyen}" title="#{bundle.ViewDemandeTitle_citoyen}"/>
+                        <h:outputText value="#{bundle.ViewDemandeLabel_activite}"/>
+                        <h:outputText value="#{demandeController.selected.activite}" title="#{bundle.ViewDemandeTitle_activite}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DemandeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

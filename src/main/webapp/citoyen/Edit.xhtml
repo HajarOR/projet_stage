@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CitoyenEditDlg" widgetVar="CitoyenEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCitoyenTitle}">
+            <h:form id="CitoyenEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{citoyenController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCitoyenLabel_cin}" for="cin" />
+                        <p:inputText id="cin" value="#{citoyenController.selected.cin}" title="#{bundle.EditCitoyenTitle_cin}" />
+                        <p:outputLabel value="#{bundle.EditCitoyenLabel_tele}" for="tele" />
+                        <p:inputText id="tele" value="#{citoyenController.selected.tele}" title="#{bundle.EditCitoyenTitle_tele}" />
+                        <p:outputLabel value="#{bundle.EditCitoyenLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{citoyenController.selected.nom}" title="#{bundle.EditCitoyenTitle_nom}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{citoyenController.update}" value="#{bundle.Save}" update="display,:CitoyenListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CitoyenEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CitoyenEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

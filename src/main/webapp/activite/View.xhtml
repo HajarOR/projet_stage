@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActiviteViewDlg" widgetVar="ActiviteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewActiviteTitle}">
+            <h:form id="ActiviteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{activiteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewActiviteLabel_id}"/>
+                        <h:outputText value="#{activiteController.selected.id}" title="#{bundle.ViewActiviteTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewActiviteLabel_libelle}"/>
+                        <h:outputText value="#{activiteController.selected.libelle}" title="#{bundle.ViewActiviteTitle_libelle}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ActiviteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

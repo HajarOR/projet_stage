@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseViewDlg" widgetVar="AdresseViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAdresseTitle}">
+            <h:form id="AdresseViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adresseController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAdresseLabel_id}"/>
+                        <h:outputText value="#{adresseController.selected.id}" title="#{bundle.ViewAdresseTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAdresseLabel_numero}"/>
+                        <h:outputText value="#{adresseController.selected.numero}" title="#{bundle.ViewAdresseTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewAdresseLabel_rue}"/>
+                        <h:outputText value="#{adresseController.selected.rue}" title="#{bundle.ViewAdresseTitle_rue}"/>
+                        <h:outputText value="#{bundle.ViewAdresseLabel_annexe}"/>
+                        <h:outputText value="#{adresseController.selected.annexe}" title="#{bundle.ViewAdresseTitle_annexe}"/>
+                        <h:outputText value="#{bundle.ViewAdresseLabel_quartier}"/>
+                        <h:outputText value="#{adresseController.selected.quartier}" title="#{bundle.ViewAdresseTitle_quartier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AdresseViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

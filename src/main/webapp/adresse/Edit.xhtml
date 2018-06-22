@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AdresseEditDlg" widgetVar="AdresseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAdresseTitle}">
+            <h:form id="AdresseEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{adresseController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAdresseLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{adresseController.selected.id}" title="#{bundle.EditAdresseTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditAdresseLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{adresseController.selected.numero}" title="#{bundle.EditAdresseTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditAdresseLabel_rue}" for="rue" />
+                        <p:inputText id="rue" value="#{adresseController.selected.rue}" title="#{bundle.EditAdresseTitle_rue}" />
+                        <p:outputLabel value="#{bundle.EditAdresseLabel_annexe}" for="annexe" />
+                        <p:selectOneMenu id="annexe" value="#{adresseController.selected.annexe}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{annexeController.itemsAvailableSelectOne}"
+                                           var="annexeItem"
+                                           itemValue="#{annexeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditAdresseLabel_quartier}" for="quartier" />
+                        <p:selectOneMenu id="quartier" value="#{adresseController.selected.quartier}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{quartierController.itemsAvailableSelectOne}"
+                                           var="quartierItem"
+                                           itemValue="#{quartierItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{adresseController.update}" value="#{bundle.Save}" update="display,:AdresseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AdresseEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AdresseEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

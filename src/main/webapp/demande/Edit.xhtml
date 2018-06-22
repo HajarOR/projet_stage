@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DemandeEditDlg" widgetVar="DemandeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDemandeTitle}">
+            <h:form id="DemandeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{demandeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{demandeController.selected.id}" title="#{bundle.EditDemandeTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_numDemande}" for="numDemande" />
+                        <p:inputText id="numDemande" value="#{demandeController.selected.numDemande}" title="#{bundle.EditDemandeTitle_numDemande}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_numAutorisation}" for="numAutorisation" />
+                        <p:inputText id="numAutorisation" value="#{demandeController.selected.numAutorisation}" title="#{bundle.EditDemandeTitle_numAutorisation}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{demandeController.selected.type}" title="#{bundle.EditDemandeTitle_type}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_nomSociete}" for="nomSociete" />
+                        <p:inputText id="nomSociete" value="#{demandeController.selected.nomSociete}" title="#{bundle.EditDemandeTitle_nomSociete}" />
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateDemande}" for="dateDemande" />
+                        <p:calendar id="dateDemande" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateDemande}" title="#{bundle.EditDemandeTitle_dateDemande}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateAutorisation}" for="dateAutorisation" />
+                        <p:calendar id="dateAutorisation" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateAutorisation}" title="#{bundle.EditDemandeTitle_dateAutorisation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateAnnulation}" for="dateAnnulation" />
+                        <p:calendar id="dateAnnulation" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateAnnulation}" title="#{bundle.EditDemandeTitle_dateAnnulation}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_dateRefus}" for="dateRefus" />
+                        <p:calendar id="dateRefus" pattern="MM/dd/yyyy" value="#{demandeController.selected.dateRefus}" title="#{bundle.EditDemandeTitle_dateRefus}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_citoyen}" for="citoyen" />
+                        <p:selectOneMenu id="citoyen" value="#{demandeController.selected.citoyen}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{citoyenController.itemsAvailableSelectOne}"
+                                           var="citoyenItem"
+                                           itemValue="#{citoyenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDemandeLabel_activite}" for="activite" />
+                        <p:selectOneMenu id="activite" value="#{demandeController.selected.activite}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{activiteController.itemsAvailableSelectOne}"
+                                           var="activiteItem"
+                                           itemValue="#{activiteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{demandeController.update}" value="#{bundle.Save}" update="display,:DemandeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DemandeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DemandeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
