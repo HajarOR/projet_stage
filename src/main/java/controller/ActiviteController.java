@@ -32,6 +32,9 @@ public class ActiviteController implements Serializable {
     }
 
     public Activite getSelected() {
+        if (selected == null) {
+            selected = new Activite();
+        }
         return selected;
     }
 

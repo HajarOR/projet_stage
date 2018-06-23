@@ -32,6 +32,9 @@ public class AnnexeController implements Serializable {
     }
 
     public Annexe getSelected() {
+        if (selected == null) {
+            selected = new Annexe();
+        }
         return selected;
     }
 

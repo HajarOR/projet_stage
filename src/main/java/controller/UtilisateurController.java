@@ -3,6 +3,7 @@ package controller;
 import bean.Utilisateur;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.SessionUtil;
 import service.UtilisateurFacade;
 
 import java.io.Serializable;
@@ -28,10 +29,57 @@ public class UtilisateurController implements Serializable {
     private List<Utilisateur> items = null;
     private Utilisateur selected;
 
+    public String creerCompte() {
+        int res = getFacade().creerCompte(selected);
+        if (res == 1) {
+            JsfUtil.addSuccessMessage("Le compte est crée avec succès");
+            selected = null;
+            return "/template/Connexion";
+
+        } else if (res == -1) {
+            JsfUtil.addErrorMessage("echec:ce compte est déja crée");
+            selected = null;
+            return null;
+        } else {
+            JsfUtil.addErrorMessage("Veuillez remplir tous les champs");
+            selected = null;
+            return null;
+        }
+
+    }
+
+    public String connecter() {
+        int res = getFacade().seConnecter(selected);
+        if (res > 0) {
+            Utilisateur utilisateur = getFacade().find(selected.getLogin());
+            SessionUtil.setAttribute("user", utilisateur);
+            JsfUtil.addSuccessMessage("Connexion avec succès");
+            selected = null;
+            return "/template/DemandesEnAttente";
+        } else if (res == -1) {
+            JsfUtil.addErrorMessage("Entrer vos informations");
+            return null;
+        } else if (res == -2) {
+            JsfUtil.addErrorMessage("Votre adresse electronique ou mot de passe est incorrecte");
+            return null;
+        } else {
+            return null;
+        }
+    }
+
+    public String deconnecter() {
+        SessionUtil.setAttribute("user", null);
+        return "/template/Connexion";
+
+    }
+
     public UtilisateurController() {
     }
 
     public Utilisateur getSelected() {
+        if (selected == null) {
+            selected = new Utilisateur();
+        }
         return selected;
     }
 

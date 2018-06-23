@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="Head.xhtml"/>
+        <div id="login-page">
+            <div class="container">
+
+                <h:form class="form-login">
+                    <h2 class="form-login-heading"><h:outputLabel value="Se connecter maintenant"/></h2>
+                    <div class="login-wrap">
+                        <p:outputLabel value="Nom d'utilisateur" /><br/>
+                        <p:inputText value="#{utilisateurController.selected.login}" class="form-control" /><br/>
+                        <p:outputLabel value="Mot de passe" /><br/>
+                        <p:password value="#{utilisateurController.selected.password}" class="form-control" /><br/>
+
+                        <label class="checkbox">
+                            <span class="pull-right">
+                                <p:commandLink actionListener="null" value="Mot de passe oublié?" onclick="PF('pwdOublie').show();"></p:commandLink>
+                            </span>
+                        </label><br/>
+                        <h:commandButton class="btn btn-theme btn-block" action="#{utilisateurController.connecter()}"   type="submit" value="SE CONNECTER"></h:commandButton>
+                        <hr/>
+                        <div class="registration">
+                            <h:outputLabel value="Vous n'avez pas un compte?"/><br/>
+                            <h:commandLink  action="Inscription.xhtml" value=" S'inscrire"></h:commandLink> 
+                        </div>
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+
+        <!--BACKSTRETCH-->
+        <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+        <script type="text/javascript" src="../resources/js/jquery.backstretch.min.js"></script>
+        <script>
+                                    $.backstretch("../resources/img/inscription_bg.jpg", {speed: 500});
+        </script>
+        <ui:include src="PasswordDialog.xhtml"/>
+    </h:body>
+</html>
+

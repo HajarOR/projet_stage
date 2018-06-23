@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gestion des autorisations</title>
+    </h:head>
+    <h:body>
+        <ui:include src="Head.xhtml"/>
+        <ui:include src="JsPage.xhtml"/>
+        <section id="container">
+            <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
+
+            <section class="inscMt">
+                <h:form class="well form-horizontal insBg" id="pass">
+                    <center><h2 class="mb insTit">Créer Votre Compte</h2></center><br/>
+                    <div class="form-group">
+                        <label class="col-md-2"></label>
+                        <h:outputLabel value="Nom d'utilisateur" class="col-md-3 control-label" /> 
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <p:inputText  placeholder="Nom" class="form-control" value="#{utilisateurController.selected.login}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2"></label>
+                        <h:outputLabel value="E-mail" class="col-md-3 control-label"/>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <p:inputText placeholder=" Adresse E-Mail" class="form-control" type="email" value="#{utilisateurController.selected.email}">
+                                    <p:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
+                                </p:inputText>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2"></label>
+                        <h:outputLabel value="Mot de passe" class="col-md-3 control-label"/>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <p:password id="pwd1" value="#{utilisateurController.selected.password}" feedback="true" match="pwd2" label="Password 1" required="true" placeholder=" Mot de passe" class="form-control"  />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2"></label>
+                        <h:outputLabel value="Confirmer le mot de passe" class="col-md-3 control-label"/>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <p:password id="pwd2" value="#{utilisateurController.selected.password}" label="Password 2" required="true"  placeholder="Confirmer le mot de passe" class="form-control"/>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class=" control-label col-lg-5"></label>
+                        <div class="col-lg-7">
+                            <p:commandButton styleClass="button-small blue_light rounded3" value="Créer Compte" action="#{utilisateurController.creerCompte()}" update="pass"/>
+                        </div>
+                    </div>
+                </h:form>
+            </section>
+
+            <!--main content end-->
+            <!--footer start-->
+            <footer class="site-footer">
+
+                <div class="text-center">
+                    Gestion des autorisations
+                </div>
+            </footer>
+            <!--footer end-->
+        </section>
+        <script type="text/javascript" src="../resources/js/jquery.backstretch.min.js"></script>
+        <script>
+            $.backstretch("../resources/img/inscription_bg.jpg", {speed: 500});
+        </script>
+    </h:body>
+</html>
+

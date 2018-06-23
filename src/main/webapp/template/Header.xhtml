@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="Head.xhtml"/>
+        <header class="header black-bg">
+            <h:form>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <!--logo start-->
+                <a href="Accueil.xhtml" class="logo"><b>CONSEIL D'ARRONDISSEMENT MENERA</b></a>
+                <!--logo end-->
+                <div class="nav notify-row" id="top_menu">
+                    <!--  notification start -->
+                    <ul class="nav top-menu">
+                        <!-- inbox dropdown start-->
+                        <li id="header_inbox_bar" class="dropdown">
+                            <h:commandLink  class="dropdown-toggle" action="DemandeForm.xhtml">
+                                <i class="fa fa-plus"></i>
+                                <span class="badge bg-theme"></span>
+                            </h:commandLink>
+
+                        </li>
+                        <!-- inbox dropdown end -->
+                        <!-- inbox dropdown start-->
+                        <li id="header_inbox_bar" class="dropdown">
+                            <h:commandLink  class="dropdown-toggle" action="ProtestationForm.xhtml">
+                                <i class="fa fa-plus-circle"></i>
+                                <span class="badge bg-theme"></span>
+                            </h:commandLink>
+
+                        </li>
+                        <!-- inbox dropdown end -->
+                        <!-- inbox dropdown start-->
+                        
+                        <!-- inbox dropdown end -->
+                        <!-- inbox dropdown start-->
+                        <li id="header_inbox_bar" class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                                <i class="fa fa-bell"></i>
+                                <span class="badge bg-theme"></span>
+                            </a>
+                            <ul class="dropdown-menu extended inbox">
+                                <div class="notify-arrow notify-arrow-green"></div>
+                                <li>
+                                    <p class="green">Il y'a 5 demandes en attente</p>
+                                </li>
+                                <li>
+                                    <h:commandLink action="DemandesEnAttente.xhtml">
+                                        <span class="subject">
+                                            <span class="from">Zac Snider</span>
+                                            <span class="time">Just now</span>
+                                        </span>
+                                        <span class="message">
+                                            adresse1
+                                        </span>
+                                    </h:commandLink>
+                                </li>
+                                <li>
+                                    <h:commandLink action="DemandesEnAttente.xhtml" value="Voir toutes les demandes en attente"/>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- inbox dropdown end -->
+                    </ul>
+                    <!--  notification end -->
+                </div>
+                <div class="top-menu">
+                    <ul class="nav pull-right top-menu">
+                        <li><h:commandButton class="logout" action="#{utilisateurController.deconnecter()}" value="Se déconnecter"/></li>
+                    </ul>
+                </div>
+            </h:form>
+        </header>
+    </h:body>
+</html>
+

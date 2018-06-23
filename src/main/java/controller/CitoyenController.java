@@ -32,6 +32,9 @@ public class CitoyenController implements Serializable {
     }
 
     public Citoyen getSelected() {
+        if (selected == null) {
+            selected = new Citoyen();
+        }
         return selected;
     }
 

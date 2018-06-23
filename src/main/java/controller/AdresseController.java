@@ -32,6 +32,9 @@ public class AdresseController implements Serializable {
     }
 
     public Adresse getSelected() {
+        if (selected == null) {
+            selected = new Adresse();
+        }
         return selected;
     }
 

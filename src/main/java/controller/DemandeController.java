@@ -32,6 +32,9 @@ public class DemandeController implements Serializable {
     }
 
     public Demande getSelected() {
+        if (selected == null) {
+            selected = new Demande();
+        }
         return selected;
     }
 

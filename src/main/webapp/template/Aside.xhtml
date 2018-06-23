@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <aside>
+            <h:form>
+                <div id="sidebar"  class="nav-collapse ">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu" id="nav-accordion">
+                       
+                        <li class="mt">
+                            <h:commandLink action="Demandes.xhtml">
+                                <i class="fa fa-building"></i>
+                                <span style="color: #FFF">Demandes en attente</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="DemandeRefusees.xhtml">
+                                <i class="fa fa-exclamation-circle"></i>
+                                <span style="color: #FFF">Demandes refusées</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="DemandesAnnules.xhtml">
+                                <i class="fa fa-ban"></i>
+                                <span style="color: #FFF">Demandes annulées</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="Autorisations.xhtml">
+                                <i class="fa fa-check-circle"></i>
+                                <span style="color: #FFF">Autorisations</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="Protestations.xhtml">
+                                <i class="fa fa-minus-circle"></i>
+                                <span style="color: #FFF">Protestations</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="Annexes.xhtml">
+                                <i class="fa fa-plus"></i>
+                                <span style="color: #FFF">Annexes</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="Activites.xhtml">
+                                <i class="fa fa-plus"></i>
+                                <span style="color: #FFF">Activités</span>
+                            </h:commandLink>
+                        </li>
+                        <li class="mt">
+                            <h:commandLink action="Statistiques.xhtml">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span style="color: #FFF">Statistiques</span>
+                            </h:commandLink>
+                        </li>
+
+
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </h:form>
+        </aside>
+    </h:body>
+</html>
+

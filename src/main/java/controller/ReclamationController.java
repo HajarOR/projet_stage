@@ -32,6 +32,9 @@ public class ReclamationController implements Serializable {
     }
 
     public Reclamation getSelected() {
+        if (selected == null) {
+            selected = new Reclamation();
+        }
         return selected;
     }
 

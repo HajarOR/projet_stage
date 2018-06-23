@@ -32,6 +32,9 @@ public class QuartierController implements Serializable {
     }
 
     public Quartier getSelected() {
+        if (selected == null) {
+            selected = new Quartier();
+        }
         return selected;
     }
 
